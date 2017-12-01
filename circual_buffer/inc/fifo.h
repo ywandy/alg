@@ -4,7 +4,13 @@
 #include "stdlib.h"
 #include "unistd.h"
 #include "string.h"
+
 #define min(a,b) ((a)<(b)?(a):(b))
+/*
+ * 圆形缓存区
+ * 参照kfifo,c
+ * yewei_andy
+ * */
 struct _fifo{
   unsigned int in;
   unsigned int out;
