@@ -32,9 +32,36 @@ void ReplaceString(char *str,int length){
 }
 
 
+void unit_test_ReplaceString(){
+	char teststr[] = "hello world my love";
+	ReplaceString(teststr, sizeof(teststr));
+	cout<<teststr<<endl;
+}
+
+
+char FirstAppearone(char inpstr[],int length){
+	int hashmap[2][256]={0};
+	int index_small = length+1;
+	for(int loop=0;loop<length;loop++){
+		hashmap[1][(int)inpstr[loop]]++;
+		hashmap[2][(int)inpstr[loop]]=loop;
+	}
+	for(int searchloop=0;searchloop<length;searchloop++){
+		if(hashmap[1][(int)inpstr[searchloop]]==1){
+			if(hashmap[2][(int)inpstr[searchloop]]<index_small)
+					index_small=hashmap[2][(int)inpstr[searchloop]];
+			}
+	}
+
+	return inpstr[index_small];
+}
+
+void unit_test_FirstAppearone(){
+	char teststr[] = "hfdaihfahfoiwhwoiahfoiwafhoiafhafhiwahfoiahfoiawoifwaoihfoiahfwaihfoifhwaoihfoahfoahfoahgoihgoiwahgowaigwakfnkajgwajgwagwajgpwagowa8ig";
+	cout<<"raw inp is:"<<teststr<<endl;
+	cout<<"the index small:"<<FirstAppearone(teststr,sizeof(teststr))<<endl;
+}
 int main(){
-  char teststr[] = "hello world my love";
-  ReplaceString(teststr, sizeof(teststr));
-  cout<<teststr<<endl;
-  return 0;
+	unit_test_FirstAppearone();
+	return 0;
 }
