@@ -19,9 +19,29 @@
 #define OVERFLOW -1
 
 typedef int Status;
-typedef int ElemType; //数据结构写法的规范
+typedef int ElemType;
+class SqList{
+private:
+	ElemType  *elem;
+	int length;
+	int size;
+	int increment;
+public:
+	SqList(int inp_size,ElemType inc);
+	~SqList();
+	int ListLength_Sq();
+	int GetElem_Sq(int pos);
+	int Search_Sq(ElemType e);
+	Status DeleteLast_Sq(ElemType &e);
+	Status ClearList_Sq();
+	Status ListEmpty_Sq();
+	Status PutElem_Sq(ElemType e,ElemType pos);
+	Status Append_Sq(ElemType e);
+	Status ListTraverse_Sq(Status(*visit)(ElemType e));
 
+};
 
+void unit_test_SqList();
 
 
 #endif /* DATA_STRUCT_INC_SQLIST_H_ */

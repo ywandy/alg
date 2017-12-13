@@ -1,7 +1,9 @@
 #include <iostream>
 #include <SqStack.h>
+#include <SqList.h>
 int main(){
   std::cout << "hello world data_struct" << '\n';
-  Unit_Test_Stack_Sq_1();
+  unit_test_SqList();
+
   return 0;
 }
