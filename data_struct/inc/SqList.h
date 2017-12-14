@@ -29,9 +29,9 @@ private:
 public:
 	SqList(int inp_size,int inc);
 	~SqList();
-	int ListLength_Sq();
-	int GetElem_Sq(int pos);
-	int Search_Sq(ElemType e);
+	ElemType ListLength_Sq();
+	ElemType GetElem_Sq(int pos);
+	ElemType Search_Sq(ElemType e);
 	Status DeleteLast_Sq(ElemType &e);
 	Status ClearList_Sq();
 	Status ListEmpty_Sq();
@@ -39,7 +39,9 @@ public:
 	Status Append_Sq(ElemType e);
 	Status ListTraverse_Sq(void(*visit)(ElemType e));
 
-	static void PrintList(ElemType e);
+	static void PrintList(ElemType e){
+		std::cout<<e<<" ";
+	}
 
 };
 
@@ -70,7 +72,7 @@ Status SqList<ElemType>::DeleteLast_Sq(ElemType &e){
 }
 
 template<typename ElemType>
-int SqList<ElemType>::Search_Sq(ElemType e){
+ElemType SqList<ElemType>::Search_Sq(ElemType e){
 	int pos = 0;
 	while((pos<length)&&(elem[pos]!=e))
 		pos++;
@@ -95,7 +97,7 @@ Status SqList<ElemType>::ListEmpty_Sq(){
 }
 
 template<typename ElemType>
-int SqList<ElemType>::ListLength_Sq(){
+ElemType SqList<ElemType>::ListLength_Sq(){
 	return length;
 }
 
@@ -121,7 +123,7 @@ Status SqList <ElemType>::Append_Sq(ElemType e){
 }
 
 template<typename ElemType>
-int SqList<ElemType>::GetElem_Sq(int pos){
+ElemType SqList<ElemType>::GetElem_Sq(int pos){
 	if((pos<0)||(pos>length))
 		return -1;
 	return elem[pos];
@@ -136,12 +138,7 @@ Status SqList<ElemType>::ListTraverse_Sq(void(*visit)(ElemType e)){
 	return OK;
 }
 
-template<typename ElemType>
-void SqList<ElemType>::PrintList(ElemType e){
-	std::cout<<e<<" ";
-}
-
 void unit_test_SqList();
-
+void unit_test_SqList2();//有序顺序表归并
 
 #endif /* DATA_STRUCT_INC_SQLIST_H_ */
