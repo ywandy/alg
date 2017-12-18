@@ -14,7 +14,11 @@ OBJ = $(patsubst %.cpp,${DIR_OBJ}/%.o,$(notdir ${SRC}))
 TARGET = datastruct
 BIN_TARGET = ${DIR_BIN}/${TARGET}
 
+
 all:${BIN_TARGET}
+	cp ${DIR_BIN}/${TARGET} ../build/bin/${TARGET}
+
+
 ${BIN_TARGET} : ${OBJ}
 	@echo 链接生成目标文件
 	${LD} ${DEF} $(OBJ) ${Lib_flag} -o $@
@@ -22,7 +26,6 @@ ${BIN_TARGET} : ${OBJ}
 ${DIR_OBJ}/%.o : ${DIR_SRC}/%.cpp
 	@echo 正在编译:$< 输出目标: $@
 	$(CC) ${DEF} ${Lib_flag} -I${DIR_INC} -c $< -o $@ 
-
 
 .PHONY:clean
 clean:

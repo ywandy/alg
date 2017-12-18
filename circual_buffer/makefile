@@ -14,7 +14,8 @@ OBJ = $(patsubst %.cpp,${DIR_OBJ}/%.o,$(notdir ${SRC}))
 TARGET = circular_buf
 BIN_TARGET = ${DIR_BIN}/${TARGET}
 
-all:${BIN_TARGET} 
+all:${BIN_TARGET}
+	cp ${DIR_BIN}/${TARGET} ../build/bin/${TARGET}
 ${BIN_TARGET} : ${OBJ}
 	@echo 链接生成目标文件
 	${LD} ${DEF} ${Lib_flag} $(OBJ) -o $@

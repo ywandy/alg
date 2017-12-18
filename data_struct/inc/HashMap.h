@@ -17,57 +17,67 @@
 typedef int Status;
 
 
-template<typename RcdType,typename KeyType>
+template<typename KeyType,typename RcdType>
 class HashItem{
-	RcdType Rcd;
+	RcdType Val;
 	KeyType Key;
+	//int Size_value,Size_Key;
 public:
-	HashItem(RcdType R,KeyType K):Rcd(R),Key(K){}
-	RcdType getRcd(){return Rcd;}
+//	HashItem(RcdType* value,KeyType* key,int size_value,int size_key):Size_value(size_value),Size_Key(size_key){
+//		RcdType* value_tmp = new RcdType[size_value];
+//		KeyType* key_tmp = new KeyType[size_key];
+//		memcpy(value_tmp,value,size_value);
+//		memcpy(key_tmp,key,size_key);
+//	}
+	HashItem(KeyType key,RcdType value):Key(key),Val(value){}
+	//int getSize(){return Size_value;}
+	RcdType getValue(){return Val;}
 	KeyType getKey(){return Key;}
 
 };
 
 
-template<typename RcdType,typename KeyType>
+template<typename KeyType,typename RcdType>
 class HashTable{
 private:
-	HashItem<RcdType,KeyType> **table;
+	HashItem<KeyType,RcdType> **table;
 	int size;
 public:
 	HashTable(int size);
 	~HashTable();
-	void InsertHash(RcdType val,KeyType key);
-	Status SearchHash(KeyType key);
-	static int hash(int key,int hashsize){
+	void InsertHash(KeyType key,RcdType val);
+	RcdType SearchHash(KeyType key);
+	static int hash(KeyType key,int hashsize){
 		return key%hashsize;
 	};
 };
 
-template<typename RcdType,typename KeyType>
-HashTable<RcdType,KeyType>::HashTable(int inp_size){
-	table = new HashItem*[inp_size]();
+template<typename KeyType,typename RcdType>
+HashTable<KeyType,RcdType>::HashTable(int inp_size){
+	table = new HashItem<KeyType,RcdType>*[inp_size]();
 	size = inp_size;
 }
 
-template<typename RcdType,typename KeyType>
-HashTable<RcdType,KeyType>::~HashTable(){
+template<typename KeyType,typename RcdType>
+HashTable<KeyType,RcdType>::~HashTable(){
 	for(int i=0;i<size;i++)
 		if(table[i]!=NULL)delete table[i];
 	delete[] table;
 }
 
-template<typename RcdType,typename KeyType>
-void HashTable<RcdType,KeyType>::InsertHash(RcdType val,KeyType key){
+template<typename KeyType,typename RcdType>
+void HashTable<KeyType,RcdType>::InsertHash(KeyType key,RcdType val){
 	int ind = hash(key,size);
 	if(table[ind]!=NULL)
 		delete table[ind];
-	table[ind] = new HashItem(key, val);
+	table[ind] = new HashItem<KeyType,RcdType>(key, val);
 }
 
-template<typename RcdType,typename KeyType>
-Status HashTable<RcdType,KeyType>::SearchHash(KeyType key){
-
+template<typename KeyType,typename RcdType>
+RcdType HashTable<KeyType,RcdType>::SearchHash(KeyType key){
+	if(table[hash(key,size)]!=NULL)
+		return table[hash(key,size)]->getValue();
+	return ERROR;
 }
 
 void unit_test_HashMap();
