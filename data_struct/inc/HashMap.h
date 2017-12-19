@@ -23,12 +23,6 @@ class HashItem{
 	KeyType Key;
 	//int Size_value,Size_Key;
 public:
-//	HashItem(RcdType* value,KeyType* key,int size_value,int size_key):Size_value(size_value),Size_Key(size_key){
-//		RcdType* value_tmp = new RcdType[size_value];
-//		KeyType* key_tmp = new KeyType[size_key];
-//		memcpy(value_tmp,value,size_value);
-//		memcpy(key_tmp,key,size_key);
-//	}
 	HashItem(KeyType key,RcdType value):Key(key),Val(value){}
 	//int getSize(){return Size_value;}
 	RcdType getValue(){return Val;}
