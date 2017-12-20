@@ -4,6 +4,7 @@
 #include <LStack.h>
 #include <LinkList.h>
 #include <HashMap.h>
+#include <BinaryTree.h>
 int main(){
   std::cout << "hello world data_struct" << '\n';
   //unit_test_SqList();
@@ -11,6 +12,6 @@ int main(){
 
   //unit_test_LStack();
   //unit_test_LinkList();
-  unit_test_HashMap();
+  //unit_test_HashMap();
   return 0;
 }
