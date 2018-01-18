@@ -47,7 +47,7 @@ void view(ElemType e){
 }
 
 
-#define Hanoi_Layer 3
+#define Hanoi_Layer 9999
 void HanoTower_unit_test(){
 	std::cout<<"结合SqStack和汉诺塔递归问题实现的汉诺塔"<<std::endl;
 	InitStack_Sq(X, 10, 5);
