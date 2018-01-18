@@ -36,6 +36,7 @@ Status GetTop_Sq(SqStack &S,ElemType &e);
 Status DestroyStack_Sq(SqStack &S);
 void ClearStack_Sq(SqStack &S);
 Status StackEmpty_Sq(SqStack S);
+Status VisitStack_Sq(SqStack &S,void(*visit)(ElemType e));
 void Unit_Test_Stack_Sq_1();
 //实现的接口
 

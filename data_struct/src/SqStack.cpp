@@ -63,6 +63,22 @@ Status DestroyStack_Sq(SqStack &S){
 	return OK;
 }
 
+Status VisitStack_Sq(SqStack &S,void(*visit)(ElemType e)){
+	int pos = S.top;
+	ElemType tmp;
+	if(pos==0){
+		std::cout<<std::endl;
+		return ERROR;
+	}
+	while(pos!=0){
+		tmp = S.elem[pos-1];
+		visit(tmp);
+		pos--;
+	}
+	std::cout<<std::endl;
+	return OK;
+}
+
 void ClearStack_Sq(SqStack &S){
 	S.top = 0;
 }

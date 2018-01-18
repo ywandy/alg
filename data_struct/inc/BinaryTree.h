@@ -39,12 +39,4 @@ public:
 	Status CutRight(BitNode<ElemType> *T,BitNode<ElemType> *RT);
 };
 
-template<typename ElemType>
-BiTree<ElemType>::BiTree(ElemType e){
-	TreeRoot = new BitNode<ElemType>;
-	if(t==NULL)
-		exit(-1);
-	TreeRoot->data = e;
-}
-
 #endif /* DATA_STRUCT_INC_BINARYTREE_H_ */

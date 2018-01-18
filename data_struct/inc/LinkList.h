@@ -169,4 +169,5 @@ _LNode<ElemType>* LinkList<ElemType>::Search_L(ElemType e){
 
 
 void unit_test_LinkList();
+
 #endif /* DATA_STRUCT_INC_LINKLIST_H_ */
