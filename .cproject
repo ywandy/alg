@@ -59,7 +59,7 @@
 					<folderInfo id="cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.130022657." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1862931911" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.284780480" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
-							<builder autoBuildTarget="" buildPath="${workspace_loc:/alg/sort}" command="make" enableAutoBuild="false" enabledIncrementalBuild="true" id="cdt.managedbuild.target.gnu.builder.base.1461886583" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="cdt.managedbuild.target.gnu.builder.base"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/alg/sort}" command="make" enableAutoBuild="true" enabledIncrementalBuild="true" id="cdt.managedbuild.target.gnu.builder.base.1461886583" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="4" superClass="cdt.managedbuild.target.gnu.builder.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.211542661" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1991558284" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.829768459" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
@@ -218,6 +218,7 @@
 		<configuration configurationName="build_circual_buffer">
 			<resource resourceType="PROJECT" workspacePath="/alg"/>
 		</configuration>
+		<configuration configurationName="build_data_struct"/>
 		<configuration configurationName="build_sort">
 			<resource resourceType="PROJECT" workspacePath="/alg"/>
 		</configuration>
@@ -232,7 +233,13 @@
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.130022657;cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.130022657.;cdt.managedbuild.tool.gnu.c.compiler.base.2144900585;cdt.managedbuild.tool.gnu.c.compiler.input.482395158">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.2008419541.124687215;cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.2008419541.124687215.;cdt.managedbuild.tool.gnu.cpp.compiler.base.109445292;cdt.managedbuild.tool.gnu.cpp.compiler.input.522904427">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.130022657;cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.130022657.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1991558284;cdt.managedbuild.tool.gnu.cpp.compiler.input.829768459">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.2008419541.124687215;cdt.managedbuild.toolchain.gnu.base.1110694859.209769794.2008419541.124687215.;cdt.managedbuild.tool.gnu.c.compiler.base.762223035;cdt.managedbuild.tool.gnu.c.compiler.input.347842058">

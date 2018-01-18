@@ -11,8 +11,6 @@
 //汉诺塔递归算法
 SqStack X,Y,Z;
 
-
-
 void hanoi_view(SqStack &x,SqStack &y,SqStack &z){
 
 	std::cout<<"第一根柱子(顶端)";

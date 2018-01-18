@@ -1,17 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
-  struct ListNode {
-        int val;
-        struct ListNode *next;
-        ListNode(int x) :
-              val(x), next(NULL) {
-        }
-  };
-
-
 using namespace std;
 
+
+
+/***二维数组查询******/
 bool find_target(int target,int cow,int cot,int array[][4]){
 	int i,j,pos_cow,pos_cot;
 	i=j=0;
@@ -47,8 +41,17 @@ int unit_test_findtarget(){
 		cout<<"没有这个整数"<<endl;
 	return 0;
 }
+/***二维数组查询******/
 
 
+struct ListNode {
+      int val;
+      struct ListNode *next;
+      ListNode(int x) :
+            val(x), next(NULL) {
+      }
+};
+/****链表倒序******/
 vector<int> printListFromTailToHead(ListNode* head) {
        ListNode* p;
        p=head;
@@ -68,6 +71,8 @@ vector<int> printListFromTailToHead(ListNode* head) {
  *
  * 链表去重函数
  * */
+
+
 ListNode* deleteDuplication(ListNode* pHead){
 	ListNode *head = new ListNode(-1);
 	head->next=pHead;
@@ -113,6 +118,10 @@ void unit_test_deleteDuplication(){
 	        p = p->next;
 	    }
 }
+/*
+ *
+ * 链表去重函数
+ * */
 
 
 
@@ -161,6 +170,7 @@ void unit_test_Permutation(){
 	Permutation(test,0,3);
 	view_all_str(buf,num_pos);
 }
+/****全排列算法********/
 
 
 int main(){

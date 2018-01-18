@@ -1,10 +1,8 @@
 #include <iostream>
+#include <HalfFold.h>
 
 int main(){
   std::cout << "hello world" << '\n';
-
-  while (true) {
-    /* code */
-  }
+  HalfFold_unit_test();
   return 0;
 }
