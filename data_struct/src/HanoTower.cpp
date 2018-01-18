@@ -6,14 +6,15 @@
  */
 
 
-#include "HanoTower.h"
-
+#include <HanoTower.h>
+#include <ctime>
 //汉诺塔递归算法
 SqStack X,Y,Z;
 
 
 
 void hanoi_view(SqStack &x,SqStack &y,SqStack &z){
+
 	std::cout<<"第一根柱子(顶端)";
 	VisitStack_Sq(X,view);
 	std::cout<<"第二根柱子(顶端)";
@@ -28,7 +29,7 @@ void move(SqStack &x,SqStack &z){
 	if(Pop_Sq(x,tmp)==ERROR)
 		return;
 	Push_Sq(z,tmp);
-	hanoi_view(X,Y,Z); //显示汉诺塔步骤
+	//hanoi_view(X,Y,Z); //显示汉诺塔步骤
 }
 
 void hanoi(int n,SqStack &x,SqStack &y,SqStack &z){
@@ -48,7 +49,11 @@ void view(ElemType e){
 
 
 #define Hanoi_Layer 9999
+#define VIEW_Hanoi_Flag 1
 void HanoTower_unit_test(){
+	clock_t start, finish;
+	double duration;
+	start = clock();
 	std::cout<<"结合SqStack和汉诺塔递归问题实现的汉诺塔"<<std::endl;
 	InitStack_Sq(X, 10, 5);
 	InitStack_Sq(Y, 10, 5);
@@ -58,4 +63,7 @@ void HanoTower_unit_test(){
 	}
 	hanoi_view(X,Y,Z);
 	hanoi(Hanoi_Layer,X,Y,Z);
+	finish = clock();
+	duration = (double)(finish - start) / CLOCKS_PER_SEC;
+	printf( "%f seconds\n", duration );
 }
