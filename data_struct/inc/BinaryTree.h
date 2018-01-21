@@ -29,14 +29,20 @@ private:
 public:
 	BiTree(ElemType e);
 	~BiTree();
-	BitNode<ElemType>* MakeBiTree(ElemType e,BitNode<ElemType> *L,BitNode<ElemType> *R);
-	void DestoryBiTree(BitNode<ElemType> *T);
-	Status BiTreeEmpty(BitNode<ElemType> *T);
-	Status BreakBiTree(BitNode<ElemType> *T,BitNode<ElemType> *L,BitNode<ElemType> *R);
-	Status ReplaceLeft(BitNode<ElemType> *T,BitNode<ElemType> *LT);
-	Status ReplaceRight(BitNode<ElemType> *T,BitNode<ElemType> *RT);
-	Status CutLeft(BitNode<ElemType> *T,BitNode<ElemType> *LT);
-	Status CutRight(BitNode<ElemType> *T,BitNode<ElemType> *RT);
+	BitNode<ElemType>* MakeBiTree(ElemType e,BitNode<ElemType> &L,BitNode<ElemType> &R);
+	void DestoryBiTree(BitNode<ElemType> &T);
+	Status BiTreeEmpty(BitNode<ElemType> &T);
+	Status BreakBiTree(BitNode<ElemType> &T,BitNode<ElemType> &L,BitNode<ElemType> &R);
+	Status ReplaceLeft(BitNode<ElemType> &T,BitNode<ElemType> &LT);
+	Status ReplaceRight(BitNode<ElemType> &T,BitNode<ElemType> &RT);
+	Status CutLeft(BitNode<ElemType> &T,BitNode<ElemType> &LT);
+	Status CutRight(BitNode<ElemType> &T,BitNode<ElemType> &  RT);
 };
+
+template<typename ElemType>
+BiTree<ElemType>::BiTree(ElemType e){
+
+
+}
 
 #endif /* DATA_STRUCT_INC_BINARYTREE_H_ */
