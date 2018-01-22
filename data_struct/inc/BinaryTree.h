@@ -41,8 +41,25 @@ public:
 
 template<typename ElemType>
 BiTree<ElemType>::BiTree(ElemType e){
-
-
+	TreeRoot = new BitNode<ElemType>;
 }
+
+template<typename ElemType>
+BiTree<ElemType>::~BiTree(ElemType e){
+	delete TreeRoot;
+}
+
+template<typename ElemType>
+BiTree<ElemType>::BitNode<ElemType>* MakeBiTree(ElemType e,BitNode<ElemType> &L,BitNode<ElemType> &R){
+	BitNode<ElemType> *t;
+	t = new BitNode<ElemType>;
+	if(NULL==t) return NULL;
+	t->data = e;
+	t->lchild = L;
+	t->rchild = R;
+	return t;
+}
+
+
 
 #endif /* DATA_STRUCT_INC_BINARYTREE_H_ */
