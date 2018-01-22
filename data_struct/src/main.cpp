@@ -3,7 +3,7 @@
 #include <SqList.h>
 #include <LStack.h>
 #include <LinkList.h>
-#include <HashMap.h>
+//#include <HashMap.h>
 #include <HanoTower.h>
 #include <BinarySearchTree.h>
 int main(){

@@ -8,7 +8,9 @@
 #ifndef DATA_STRUCT_INC_BINARYSEARCHTREE_H_
 #define DATA_STRUCT_INC_BINARYSEARCHTREE_H_
 #include <iostream>
+//二叉树的队列结构需要用到这个
 
+#include <queue>
 
 #define TRUE 1
 #define FALSE 0
@@ -78,6 +80,31 @@ public:
 	void insert(KeyType key,ElemType ele){
 		TreeRoot = insert(TreeRoot,key,ele);
 	}
+
+	int bitTreeDepth(){
+		return bitTreeDepth(TreeRoot);
+	}
+
+	void LevelOrderTraverse(){
+		if(TreeRoot!=NULL){
+			Node* p;
+			p = TreeRoot;
+			std::queue<Node*> q;
+			q.push(p);
+			std::cout<<"top : "<<p->data<<std::endl;
+			while(!q.empty()){
+				p = q.front();
+				q.pop();
+				std::cout<<"key:"<<p->key<<" data:"<<p->data<<std::endl;
+				if(p->left)
+					q.push(p->left);
+				if(p->right)
+					q.push(p->right);
+			}
+
+		}
+	}
+
 private:
 	//插入二叉树节点
 	Node* insert(Node *node,KeyType key,ElemType ele){
@@ -160,6 +187,18 @@ private:
 			count --;
 		}
 	}
+
+	int bitTreeDepth(Node* node){
+		int dep_l,dep_r;
+		if(NULL==node) return FALSE;
+		else{
+			dep_l = bitTreeDepth(node->left);
+			dep_r = bitTreeDepth(node->right);
+			return 1+(dep_l > dep_r ? dep_l : dep_r);
+		}
+	}
+
+
 
 
 };

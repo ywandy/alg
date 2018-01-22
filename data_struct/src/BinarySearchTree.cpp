@@ -31,4 +31,10 @@ void binary_search_tree_unit_test(){
 	std::cout<<"postOrder:"<<std::endl;
 	(*bst).postOrder();
 	std::cout<<std::endl;
+
+	std::cout<<"depth:"<<(*bst).bitTreeDepth()<<std::endl<<std::endl;
+
+	std::cout<<"level order traverse:"<<std::endl;
+	(*bst).LevelOrderTraverse();
+
 }
