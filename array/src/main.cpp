@@ -54,6 +54,34 @@ void unit_test_Permutation(){
 /****全排列算法********/
 
 
+/****求二进制的1的个数****/
+
+int BitCount(unsigned int n)//这个是错误的解法
+{
+    unsigned int c =0 ; // 计数器
+    while (n >0)
+    {
+        if((n &1) ==1) // 当前位是1
+            ++c ; // 计数器加1
+        n >>=1 ; // 移位
+    }
+    return c ;
+}
+
+int  NumberOf1(int n) {
+	int flag = 1;
+	int count = 0;
+	while(flag!=0){
+		if(n&flag)
+		   count++;
+		flag = flag<<1; //利用左移而不是错解的右移
+
+		}
+	return count;
+}
+
+
+
 int main(){
   std::cout << "hello world" << '\n';
   //unit_test_deleteDuplication();
