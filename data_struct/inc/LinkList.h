@@ -9,6 +9,7 @@
 #define DATA_STRUCT_INC_LINKLIST_H_
 
 #include <iostream>
+#include <stack>
 /*
  * 单链表
  *
@@ -41,6 +42,7 @@ public:
 	_LNode<ElemType> *Search_L(ElemType e);//
 	_LNode<ElemType> *NextElem_L(_LNode<ElemType> *p);//
 	_LNode<ElemType> *MakeNode_L(ElemType e);//
+	_LNode<ElemType> *GetHead();//
 	Status InsertAfter_L(_LNode<ElemType> *p, _LNode<ElemType> *q);//
 	Status DeleteAfter_L(_LNode<ElemType> *p, ElemType &e);//
 	void ListTraverse_L(int (*visit)(ElemType e));//
@@ -108,6 +110,11 @@ Status LinkList<ElemType>::InsertAfter_L(_LNode<ElemType> *p, _LNode<ElemType> *
 }
 
 template<typename ElemType>
+_LNode<ElemType>* LinkList<ElemType>::GetHead(){
+	return LinkHead;
+}
+
+template<typename ElemType>
 Status LinkList<ElemType>::DeleteAfter_L(_LNode<ElemType> *p, ElemType &e){
 	_LNode<ElemType> *q;
 	if(NULL=p || NULL==p->next)
@@ -169,5 +176,5 @@ _LNode<ElemType>* LinkList<ElemType>::Search_L(ElemType e){
 
 
 void unit_test_LinkList();
-
+void unit_test_LinkList_andSTL();
 #endif /* DATA_STRUCT_INC_LINKLIST_H_ */
