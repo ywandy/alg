@@ -11,7 +11,7 @@
 
 int Fibonacci(int n);
 void unit_test_Fibonacci();
-
+void unit_test_jumpFloor1();
 void unit_test_jumpFloor2();
 
 #endif /* ARRAY_INC_FIBONACCIARRAY_H_ */

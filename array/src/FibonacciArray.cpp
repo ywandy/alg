@@ -29,6 +29,17 @@ void unit_test_Fibonacci(){
 	}
 }
 
+//普通青蛙跳台阶问题
+//能够跳上1级和2级
+int jumpFloor(int number) {
+    return (Fibonacci(number)+Fibonacci(number-1));
+}
+
+void unit_test_jumpFloor1(){
+	std::cout<<"普通跳台阶问题"<<std::endl;
+	std::cout<<"n为3的时候:"<<jumpFloor(3)<<std::endl;
+}
+
 //青蛙跳台阶变态版
 //n次跳跃 n个台阶
 
@@ -40,6 +51,7 @@ int jumpFloor2(int number){
 }
 
 void unit_test_jumpFloor2(){
+	std::cout<<"变态跳台阶问题"<<std::endl;
 	std::cout<<"n为3的时候:"<<jumpFloor2(3)<<std::endl;
 }
 
