@@ -3,6 +3,7 @@
 #include <cstring>
 #include <2-DimensionalArray.h>
 #include <ListNodeAlg.h>
+#include <FibonacciArray.h>
 using namespace std;
 
 /*
@@ -56,6 +57,7 @@ void unit_test_Permutation(){
 int main(){
   std::cout << "hello world" << '\n';
   //unit_test_deleteDuplication();
-  unit_test_Permutation();
+  //unit_test_Permutation();
+  unit_test_Fibonacci();
   return 0;
 }
