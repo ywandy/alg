@@ -16,6 +16,8 @@ int main(){
   //unit_test_HashMap();
   //HanoTower_unit_test();
   //binary_search_tree_unit_test();
-  unit_test_LinkList_andSTL();
+  //unit_test_LinkList_andSTL();
+  //unit_test_LinkList_2head();
+  unit_test_LinkList_inv();
   return 0;
 }

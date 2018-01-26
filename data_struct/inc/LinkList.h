@@ -47,7 +47,7 @@ public:
 	Status DeleteAfter_L(_LNode<ElemType> *p, ElemType &e);//
 	void ListTraverse_L(int (*visit)(ElemType e));//
 
-	void InverseList();
+	void InverseCurrentList();
 	static int PrintList(ElemType e){
 		std::cout<<e<<" ";
 		return 0;
@@ -174,7 +174,35 @@ _LNode<ElemType>* LinkList<ElemType>::Search_L(ElemType e){
 }
 
 
+template<typename ElemType>
+void LinkList<ElemType>::InverseCurrentList(){
+	//判断当前的链表状态
+	if(LinkHead==nullptr || LinkHead->next==nullptr){
+		return;
+	}
+	std::stack<_LNode<ElemType> *> s;
+	_LNode<ElemType> * OldHead;
+	_LNode<ElemType> * NewHead = new _LNode<ElemType>;
+	_LNode<ElemType> *q,*p;
+	OldHead = LinkHead;
+	while(OldHead->next){
+		s.push(OldHead->next);
+		OldHead = OldHead->next;
+	}
+	p = NewHead;
+	while(!s.empty()){
+		q = s.top();
+		InsertAfter_L(p,q);
+		p = q;
+		s.pop();
+	}
+	LinkHead = NewHead;
+}
+
+
 
 void unit_test_LinkList();
 void unit_test_LinkList_andSTL();
+void unit_test_LinkList_2head();
+void unit_test_LinkList_inv();
 #endif /* DATA_STRUCT_INC_LINKLIST_H_ */
