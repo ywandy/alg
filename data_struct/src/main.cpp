@@ -18,6 +18,7 @@ int main(){
   //binary_search_tree_unit_test();
   //unit_test_LinkList_andSTL();
   //unit_test_LinkList_2head();
-  unit_test_LinkList_inv();
+  //unit_test_LinkList_inv();
+  unit_test_LinkList_merge();
   return 0;
 }

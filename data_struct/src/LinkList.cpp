@@ -60,3 +60,30 @@ void unit_test_LinkList_inv(){
 	(*ts_).InverseCurrentList();
 	(*ts_).ListTraverse_L(LinkList<int>::PrintList);
 }
+
+
+void unit_test_LinkList_merge(){
+	int test1[5] = {2,4,7,8,10};
+	int test2[5] = {2,3,7,9,11};
+	_LNode<int> *head1,*head2,*merge,*merge_head;
+	LinkList<int> *ts_1 = new LinkList<int>(5,test1);
+	LinkList<int> *ts_2 = new LinkList<int>(5,test2);
+	head1 = (*ts_1).GetHead();
+	head2 = (*ts_2).GetHead();
+	std::cout<<"打印链表1:"<<std::endl;
+	(*ts_1).ListTraverse_L(LinkList<int>::PrintList);
+	std::cout<<std::endl;
+	std::cout<<"打印链表2:"<<std::endl;
+	(*ts_2).ListTraverse_L(LinkList<int>::PrintList);
+	std::cout<<std::endl;
+
+	std::cout<<"打印合并链表:"<<std::endl;
+	merge = (*ts_1).Merge_1(head1->next,head2->next);
+	merge_head = new _LNode<int>;
+	merge_head->next = merge;
+	LinkList<int>::ListTraverse_L(merge_head,LinkList<int>::PrintList);
+	std::cout<<std::endl;
+
+
+
+}

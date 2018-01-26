@@ -43,15 +43,18 @@ public:
 	_LNode<ElemType> *NextElem_L(_LNode<ElemType> *p);//
 	_LNode<ElemType> *MakeNode_L(ElemType e);//
 	_LNode<ElemType> *GetHead();//
+	_LNode<ElemType> *Merge_1(_LNode<ElemType> *p1,_LNode<ElemType> *p2);//合并链表 返回一个合并完成的链表
+
 	Status InsertAfter_L(_LNode<ElemType> *p, _LNode<ElemType> *q);//
 	Status DeleteAfter_L(_LNode<ElemType> *p, ElemType &e);//
-	void ListTraverse_L(int (*visit)(ElemType e));//
-
+	void ListTraverse_L(int (*visit)(ElemType e));//打印class里面的链表
+	static void ListTraverse_L(_LNode<ElemType> *p,int (*visit)(ElemType e));//打印任意一个链表
 	void InverseCurrentList();
 	static int PrintList(ElemType e){
 		std::cout<<e<<" ";
 		return 0;
 	}
+
 };
 
 template<typename ElemType>
@@ -154,6 +157,16 @@ void LinkList<ElemType>::ListTraverse_L(int (*visit)(ElemType e)){
 }
 
 template<typename ElemType>
+void LinkList<ElemType>::ListTraverse_L(_LNode<ElemType> *p,int (*visit)(ElemType e)){
+	_LNode<ElemType> *tmp = new _LNode<ElemType>;
+	tmp = p->next;
+	while(tmp){
+		visit(tmp->data);
+		tmp = tmp -> next;
+	}
+}
+
+template<typename ElemType>
 _LNode<ElemType>* LinkList<ElemType>::NextElem_L(_LNode<ElemType> *p){
 	if(NULL!=p->next){
 		return p->next;
@@ -172,6 +185,30 @@ _LNode<ElemType>* LinkList<ElemType>::Search_L(ElemType e){
 	}
 	return tmp;
 }
+
+template<typename ElemType>
+_LNode<ElemType>* LinkList<ElemType>::Merge_1(_LNode<ElemType> *p1,_LNode<ElemType> *p2){
+	_LNode<ElemType> *p;
+	if(p1==NULL)
+		return p2;
+	if(p2==NULL)
+		return p1;
+	if((p1->data) < (p2->data)){
+		p = p1;
+		p->next = Merge_1(p1->next,p2);
+	}
+	else if((p1->data) >= (p2->data)){
+		p = p2;
+		p->next = Merge_1(p1,p2->next);
+	}
+	else if((p1->data) == (p2->data)){
+
+	}
+		return p;
+}
+
+
+
 
 
 template<typename ElemType>
@@ -205,4 +242,5 @@ void unit_test_LinkList();
 void unit_test_LinkList_andSTL();
 void unit_test_LinkList_2head();
 void unit_test_LinkList_inv();
+void unit_test_LinkList_merge();
 #endif /* DATA_STRUCT_INC_LINKLIST_H_ */
