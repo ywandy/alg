@@ -105,6 +105,19 @@ public:
 		}
 	}
 
+	void TreeMirror(Node* node){
+		Node *tmp = NULL;
+		if(node!=NULL){
+			tmp = node->left;
+			node->left = node->right;
+			node->right = tmp;
+			if(node->left!=NULL)
+				TreeMirror(node->left);
+			if(node->right!=NULL)
+				TreeMirror(node->left);
+		}
+	}
+
 private:
 	//插入二叉树节点
 	Node* insert(Node *node,KeyType key,ElemType ele){
@@ -197,6 +210,8 @@ private:
 			return 1+(dep_l > dep_r ? dep_l : dep_r);
 		}
 	}
+
+
 
 
 
