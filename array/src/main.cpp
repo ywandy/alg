@@ -5,6 +5,7 @@
 #include <ListNodeAlg.h>
 #include <FibonacciArray.h>
 #include <cmath>
+#include <stack>
 using namespace std;
 
 /*
@@ -69,7 +70,7 @@ int BitCount(unsigned int n)//这个是错误的解法
     return c ;
 }
 
-int  NumberOf1(int n) {
+int NumberOf1(int n) {
 	int flag = 1;
 	int count = 0;
 	while(flag!=0){
@@ -81,144 +82,118 @@ int  NumberOf1(int n) {
 	return count;
 }
 
+//调整数组使得奇数在前部分，偶数在后部分
 
-//顺时针旋转矩阵
-void swap(int &x,int &y){
-	int tmp;
-	tmp = x;
-	x = y;
-	y = tmp;
-}
-
-void print_2Array(vector<vector<int> > array){
-	for(int i=0;i<(int)array.size();i++){
-		for(int j=0;j<(int)array[0].size();j++){
-			printf("%4d",array[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-void Rotat_left_90(vector<vector<int> > &array){
-	for(int i=0;i<(int)array.size();i++){
-		for(int j=i;j<(int)array[0].size();j++){
-			swap(array[i][j],array[j][i]);
+int posOfEvenBeforeOdd(vector<int> &array){
+	for(unsigned int i=0;i<array.size();++i){
+		if(array[i]%2==0&&array[i+1]%2!=0&&i+1<=array.size()-1){
+			return i;
 		}
 	}
-	for(int j=0;j<(int)array[0].size();j++){//列
-		for(int i=0;i<(int)array.size()/2;i++){
-			swap(array[i][j],array[array.size()-1-i][j]);
-		}
+	return -1;
+}
+
+void swapArrayElem(vector<int> &array,int pos1,int pos2){
+	int tmp = array[pos1];
+	array[pos1] = array[pos2];
+	array[pos2] = tmp;
+}
+
+void reOrderArray(vector<int> &array){
+	int pos;
+	while((pos = posOfEvenBeforeOdd(array))!=-1){
+		swapArrayElem(array,pos,pos+1);
 	}
 }
 
-void Rotat_Right_90(vector<vector<int> > &array){
-	for(int j=0;j<(int)array[0].size();j++){//列
-		for(int i=0;i<(int)array.size()/2;i++){
-			swap(array[i][j],array[array.size()-1-i][j]);
-		}
+void unit_test_reOrderArray(){
+	vector<int> ts_array = {1,2,3,4,5,6,7};
+	reOrderArray(ts_array);
+	for(unsigned int i=0;i<ts_array.size();++i){
+		std::cout<<ts_array[i]<<" ";
 	}
-	for(int i=0;i<(int)array.size();i++){
-		for(int j=i;j<(int)array[0].size();j++){
-			swap(array[i][j],array[j][i]);
-		}
+	std::cout<<std::endl;
+}
+/***************/
+
+//旋转数组的最小值
+/*
+ * 对于一般的情况，假设A为输入数组，left 和 right 为数组左右边界的坐标，
+ * 考察中间位置的值A[mid] ，如果A[mid] <= A[right]，表明处于递增b，
+ * 调整右边界 right = mid；如果A[mid] >= A[left]，表明处于递增a，
+ * 因此调整左边界left = mid。当左右边界相邻时，较小的一个就是数组的最小值。
+ * 其实，对于一般情况，右边界所指的元素为最小值。
+ * */
+int findMinInRotateArray(vector<int> &array){
+	int posleft = 0;
+	int posright = array.size()-1;
+	int posmid = (0 + array.size()-1) / 2;
+	while(posright - posleft != 1){
+		if(array[posmid]<=array[posright])
+			posright = posmid;
+		else if(array[posmid]>=array[posleft])
+			posleft = posmid;
+		posmid = posleft + (posright - posleft) / 2;
 	}
+	return array[posleft]>array[posleft] ? array[posleft] : array[posright];
 }
 
-void CutLine(vector<vector<int> > &array,int line){
-	for(int j=0;j<(int)array[0].size();j++){//列
-		array[line-1][j] = -1;
-	}
+void unit_test_findMinInRotateArray(){
+	vector<int> ts_array = {3,4,5,1,2};
+	std::cout<<findMinInRotateArray(ts_array)<<std::endl;
 }
+/***********/
 
-void ReBuild(vector<vector<int> > &array){
-	vector<int> tmp;
-	int ind=0;
-	for(int i=0;i<(int)array.size();i++){
-		for(int j=0;j<(int)array[0].size();j++){
-			if(array[i][j]!=-1){
-				tmp.push_back(array[i][j]);
-			}
+//栈的压入和弹出(采用stack实现)
+bool IsPopOrder(vector<int> pushV,vector<int> popV){
+	int pos_popV = 0;
+	int pos_pushV = 0;
+	stack<int> pushStack;
+	while(pos_pushV!=pushV.size()){
+		pushStack.push(pushV[pos_pushV]);
+		if(pushStack.top()==popV[pos_popV]){
+			pos_popV++;
+			pushStack.pop();
 		}
+		pos_pushV++;
+		std::cout<<pos_pushV<<std::endl;
 	}
-	//printf("%d",tmp.size());
-	array.resize(sqrt(tmp.size()));
-	array[0].resize(sqrt(tmp.size()));
-	for(int i=0;i<sqrt(tmp.size());i++){
-		for(int j=0;j<sqrt(tmp.size());j++){
-			array[i][j]=tmp[ind];
-			ind++;
+	while(!pushStack.empty()){
+		int tmp;
+		tmp = pushStack.top();
+		if(tmp==popV[pos_popV]){
+			pos_popV++;
+
 		}
+		pushStack.pop();
 	}
+
+	if(pos_popV==popV.size())
+		return true;
+	else
+		return false;
 }
 
-void unit_test_rotatArray(){
-	vector<vector<int> > matrix = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
-	printf("旋转前的矩阵\n");
-	print_2Array(matrix);
-	CutLine(matrix,1);
-	printf("切掉第一行\n");
-	print_2Array(matrix);
-	Rotat_left_90(matrix);
-	printf("旋转后的矩阵\n");
-	print_2Array(matrix);
-
-	CutLine(matrix,1);
-		printf("切掉第一行\n");
-		print_2Array(matrix);
-		Rotat_left_90(matrix);
-		printf("旋转后的矩阵\n");
-		print_2Array(matrix);
-
-		CutLine(matrix,1);
-			printf("切掉第一行\n");
-			print_2Array(matrix);
-			Rotat_left_90(matrix);
-			printf("旋转后的矩阵\n");
-			print_2Array(matrix);
-
-
-				CutLine(matrix,1);
-				printf("切掉第一行\n");
-				print_2Array(matrix);
-				Rotat_left_90(matrix);
-				printf("旋转后的矩阵\n");
-				print_2Array(matrix);
-
-				printf("转换\n");
-				ReBuild(matrix);
-				print_2Array(matrix);
-
-				CutLine(matrix,1);
-				printf("切掉第一行\n");
-				print_2Array(matrix);
-				Rotat_left_90(matrix);
-				printf("旋转后的矩阵\n");
-				print_2Array(matrix);
-
-				CutLine(matrix,1);
-								printf("切掉第一行\n");
-								print_2Array(matrix);
-								Rotat_left_90(matrix);
-								printf("旋转后的矩阵\n");
-								print_2Array(matrix);
-
-								CutLine(matrix,1);
-												printf("切掉第一行\n");
-												print_2Array(matrix);
-												Rotat_left_90(matrix);
-												printf("旋转后的矩阵\n");
-												print_2Array(matrix);
+void unit_test_IsPopOrder(){
+	vector<int> p = {1,2,3,4,5};
+	vector<int> pop = {4,5,3,2,1};
+	if(IsPopOrder(p,pop)==true)
+		std::cout<<"true"<<std::endl;
+	else
+		std::cout<<"false"<<std::endl;
 }
 
-
-
+/************/
 
 int main(){
   std::cout << "hello world" << '\n';
   //unit_test_deleteDuplication();
   //unit_test_Permutation();
   //unit_test_Fibonacci();
-  unit_test_rotatArray();
+  //unit_test_rotatArray();
+  //unit_test_rectCover();
+  //unit_test_reOrderArray();
+  //unit_test_findMinInRotateArray();
+  unit_test_IsPopOrder();
   return 0;
 }

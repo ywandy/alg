@@ -50,8 +50,35 @@ int jumpFloor2(int number){
 		return (2*jumpFloor2(number-1));
 }
 
+//矩形覆盖问题
+/*当 n=1 时候，只有一种，就是横着   1
+ * 当n=2时候，可以横着放两个，或者竖着放两个   2
+ * 当n=3时候，可以在2的基础上加一个横，就是2个，并且可以在1的基础上加两个竖条，因此是3个 F(2)+F(1) = 3
+ * 以此类推，是一个Fibonacci数列，因此n个时候，为F(n-1)+F(n-2)
+ *
+ */
+
+int rectCover(int num){
+	if(num==0)
+		return 0;
+	else if(num==1)
+		return 1;
+	else if(num==2)
+		return 2;
+	return rectCover(num-1)+rectCover(num-2);
+}
+
 void unit_test_jumpFloor2(){
 	std::cout<<"变态跳台阶问题"<<std::endl;
 	std::cout<<"n为3的时候:"<<jumpFloor2(3)<<std::endl;
+}
+
+void unit_test_rectCover(){
+	std::cout<<"矩形覆盖"<<std::endl;
+	std::cout<<"n为3的时候:"<<rectCover(3)<<std::endl;
+	std::cout<<"n为4的时候:"<<rectCover(4)<<std::endl;
+	std::cout<<"n为5的时候:"<<rectCover(5)<<std::endl;
+	std::cout<<"n为20的时候:"<<rectCover(20)<<std::endl;
+
 }
 

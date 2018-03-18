@@ -52,3 +52,5 @@ unsigned int fifo_get(struct _fifo *fifo,unsigned char *buffer, unsigned int len
 	fifo->out += len;
 	return len;
 }
+
+
