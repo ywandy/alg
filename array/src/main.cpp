@@ -185,6 +185,33 @@ void unit_test_IsPopOrder(){
 
 /************/
 
+
+
+//判断素数算法
+bool isPrime(int num){
+	int n = static_cast<int>(sqrt(num));
+	int start = 2;
+	if(num==0||num==1)
+		return false;
+	while(start<=n){
+		if(num%start == 0){
+			return false;
+		}
+		start++;
+	}
+	return true;
+}
+
+void unit_test_isprime(int num){
+	for(int i=0;i<=num;i++){
+		if(isPrime(i))
+			std::cout<<i<<" ";
+	}
+	std::cout<<std::endl;
+}
+
+
+
 int main(){
   std::cout << "hello world" << '\n';
   //unit_test_deleteDuplication();
@@ -194,6 +221,7 @@ int main(){
   //unit_test_rectCover();
   //unit_test_reOrderArray();
   //unit_test_findMinInRotateArray();
-  unit_test_IsPopOrder();
+  //unit_test_IsPopOrder();
+  unit_test_isprime(100);
   return 0;
 }
