@@ -25,13 +25,6 @@ void BubbleSort(std::vector<int> &inparray){
 	}
 }
 
-void show_array(std::vector<int> &inp){
-	for(auto it = inp.cbegin();it!=inp.cend();it++){
-		std::cout<<*it<<" ";
-	}
-	std::cout<<std::endl;
-}
-
 void unit_test_BubbleSort(){
 	std::vector<int> ts = {1,4,5,2,3,8,9,0,7};
 	show_array(ts);
